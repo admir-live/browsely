@@ -8,7 +8,7 @@ internal sealed class ReviewUrlCommandValidator : AbstractValidator<ReviewUrlCom
     {
         RuleFor(c => c.Uri)
             .NotEmpty().WithMessage("The Uri must not be empty.")
-            .Must(BeAValidUri).WithMessage("The Uri must be a valid URL.");
+            .Must(BeAValidUri).WithMessage("The Uri must be a valid URL."); // Potential improvement: use a custom validator to check URI based on compiled regex.
     }
 
     private static bool BeAValidUri(string uri)

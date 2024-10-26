@@ -10,14 +10,9 @@ public static class ConfigurationExtensions
     /// <param name="configuration">The IConfiguration instance.</param>
     /// <param name="key">The key to look up in the configuration.</param>
     /// <returns>The value associated with the specified key.</returns>
-    public static string GetRequiredValue(this IConfiguration configuration, string key)
+    public static T GetValueOrThrow<T>(this IConfiguration configuration, string key)
     {
-        string? value = configuration[key];
-        if (string.IsNullOrEmpty(value))
-        {
-            throw new InvalidOperationException($"Configuration value for key '{key}' is missing or empty.");
-        }
-
+        T? value = configuration.GetValue<T>(key) ?? throw new InvalidOperationException($"Configuration key '{key}' is missing.");
         return value;
     }
 }

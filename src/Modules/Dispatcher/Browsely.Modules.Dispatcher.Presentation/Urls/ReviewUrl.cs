@@ -21,8 +21,5 @@ internal sealed class ReviewUrl : IEndpoint
             .WithTags(Tags.Urls);
     }
 
-    internal sealed class Request
-    {
-        public string Uri { get; init; }
-    }
+    private sealed record Request(string Uri);
 }
