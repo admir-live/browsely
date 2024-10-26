@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Common\Browsely.Common.Application\Browsely.Common.Application.csproj"/>
+        <ProjectReference Include="..\..\..\Common\Browsely.Common.Presentation\Browsely.Common.Presentation.csproj"/>
+    </ItemGroup>
+</Project>

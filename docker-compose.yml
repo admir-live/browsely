@@ -1,0 +1,42 @@
+﻿services:
+  #  browsely.modules.dispatcher.api:
+  #    image: browsely-dispatcher-api
+  #    build:
+  #      context: .
+  #      dockerfile: src/Modules/Dispatcher/Browsely.Modules.Dispatcher.Api/Dockerfile
+
+  browsely.rabbitmq:
+    container_name: browsely-rabbitmq
+    image: bitnami/rabbitmq:latest
+    restart: unless-stopped
+    environment:
+      RABBITMQ_PASSWORD: "NewPassword123"
+      RABBITMQ_USERNAME: "rabbitmq"
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit loopback_users []"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  browsely.sqlserver:
+    container_name: browsely-mssql
+    image: mcr.microsoft.com/mssql/server
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y.
+      - SA_PASSWORD=Plavi.12.
+    ports:
+      - "1434:1433"
+    volumes:
+      - ./data/sqldata:/var/opt/mssql/data
+
+  browsely.seq:
+    container_name: browsely-seq
+    restart: unless-stopped
+    image: datalust/seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "88:80"
+      - "5341:5341"
+    volumes:
+      - ./data/seq:/data
