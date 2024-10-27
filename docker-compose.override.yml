@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  browsely.modules.dispatcher.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  
+  browsely.modules.node.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
