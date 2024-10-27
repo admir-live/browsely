@@ -36,6 +36,13 @@ public sealed class Url : Entity
     public void NextState()
     {
         CurrentState = CurrentState.Next();
+        UpdateModifiedTimestamp();
+    }
+
+    public void Fail()
+    {
+        CurrentState = new FailedState();
+        UpdateModifiedTimestamp();
     }
 
     public static Url Create(Ulid urlId, string requestUri)

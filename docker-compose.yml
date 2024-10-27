@@ -1,4 +1,6 @@
-﻿services:
+﻿version: '3.8'
+
+services:
   browsely.modules.dispatcher.api:
     image: browsely-dispatcher-api
     container_name: Browsely.Dispatcher.Api
@@ -22,6 +24,7 @@
     ports:
       - "5058:5058"
       - "8082:8080"
+    privileged: true
     depends_on:
       - browsely.rabbitmq
 
@@ -48,6 +51,12 @@
       - "1434:1433"
     volumes:
       - ./data/sqldata:/var/opt/mssql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Plavi.12. -Q 'SELECT 1'" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
   browsely.seq:
     container_name: Browsely.Seq

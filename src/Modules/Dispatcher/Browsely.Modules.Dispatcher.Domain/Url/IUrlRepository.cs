@@ -21,7 +21,8 @@ public interface IUrlRepository
     ///     Retrieves a URL from the repository asynchronously.
     /// </summary>
     /// <param name="id">The unique identifier of the URL.</param>
+    /// <param name="withTracking">A flag indicating whether to track the entity.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the URL.</returns>
-    Task<Url?> GetAsync(Ulid id, CancellationToken cancellationToken = default);
+    Task<Url?> GetAsync(Ulid id, bool withTracking = false, CancellationToken cancellationToken = default);
 }

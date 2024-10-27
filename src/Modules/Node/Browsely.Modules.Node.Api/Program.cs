@@ -1,4 +1,3 @@
-using Browsely.Common.Application;
 using Browsely.Modules.Node.Application;
 using Browsely.Modules.Node.Infrastructure;
 using BrowselyCommon.Infrastructure.Extensions;
@@ -17,7 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 builder.Services
-    .AddApplication([AssemblyReference.Assembly])
+    .AddApplication([AssemblyReference.Assembly], builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
 WebApplication app = builder.Build();

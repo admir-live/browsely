@@ -2,4 +2,8 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\Common\Browsely.Common.Application\Browsely.Common.Application.csproj"/>
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Docker.DotNet" Version="3.125.15"/>
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0"/>
+    </ItemGroup>
 </Project>

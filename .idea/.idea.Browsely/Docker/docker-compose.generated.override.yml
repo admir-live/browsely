@@ -1,41 +1,74 @@
 # This is a generated file. Not intended for manual editing.
+version: "3.8"
 services:
   browsely.modules.dispatcher.api:
     build:
       context: "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely"
       dockerfile: "src/Modules/Dispatcher/Browsely.Modules.Dispatcher.Api/Dockerfile"
       target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
     command: []
     entrypoint:
-    - "dotnet"
-    - "/app/bin/Debug/net8.0/Browsely.Modules.Dispatcher.Api.dll"
+    - "/opt/rider-debugger/linux-x64/JetBrains.Debugger.Worker"
+    - "--runtimeconfig"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.runtimeconfig.json"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "browsely-dispatcher-api:dev"
-    ports: []
+    ports:
+    - "127.0.0.1:57014:57100"
+    - "127.0.0.1:57214:57300"
     volumes:
     - "C:\\Users\\AdmirMujkic\\.nuget\\packages:/home/app/.nuget/packages"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely\\src\\Modules\\Dispatcher\\\
       Browsely.Modules.Dispatcher.Api:/app:rw"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely:/src:rw"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2024.2.7\\\
+      Linux64:/opt/rider-debugger"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\Programs\\Rider\\bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\Rider2024.2\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_10_27_08_57_14:/var/opt/rider-debugger:rw"
     working_dir: "/app"
   browsely.modules.node.api:
     build:
       context: "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely"
       dockerfile: "src/Modules/Node/Browsely.Modules.Node.Api/Dockerfile"
       target: "base"
+      args:
+        BUILD_CONFIGURATION: "Debug"
     command: []
     entrypoint:
-    - "dotnet"
-    - "/app/bin/Debug/net8.0/Browsely.Modules.Node.Api.dll"
+    - "/opt/rider-debugger/linux-x64/JetBrains.Debugger.Worker"
+    - "--runtimeconfig"
+    - "/opt/rider-debugger/JetBrains.Debugger.Worker.runtimeconfig.json"
+    - "--mode=server"
+    - "--frontend-port=57100"
+    - "--backend-port=57300"
+    - "--timeout=60"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       DOTNET_USE_POLLING_FILE_WATCHER: "true"
+      RIDER_DEBUGGER_LOG_DIR: "/var/opt/rider-debugger"
+      RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "browsely-node-api:dev"
-    ports: []
+    ports:
+    - "127.0.0.1:57015:57100"
+    - "127.0.0.1:57215:57300"
     volumes:
     - "C:\\Users\\AdmirMujkic\\.nuget\\packages:/home/app/.nuget/packages"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely\\src\\Modules\\Node\\Browsely.Modules.Node.Api:/app:rw"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely:/src:rw"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\RiderRemoteDebugger\\2024.2.7\\\
+      Linux64:/opt/rider-debugger"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\Programs\\Rider\\bin:/etc/opt/rider-debugger/backend-log.xml"
+    - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\Rider2024.2\\log\\DebuggerWorker\\\
+      JetBrains.Debugger.Worker.2024_10_27_08_57_14:/var/opt/rider-debugger:rw"
     working_dir: "/app"

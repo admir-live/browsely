@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <ProjectReference Include="..\..\..\Common\Browsely.Common.Infrastructure\Browsely.Common.Infrastructure.csproj"/>
+        <ProjectReference Include="..\..\Dispatcher\Browsely.Modules.Dispatcher.Infrastructure\Browsely.Modules.Dispatcher.Infrastructure.csproj"/>
         <ProjectReference Include="..\Browsely.Modules.Node.Presentation\Browsely.Modules.Node.Presentation.csproj"/>
     </ItemGroup>
 </Project>

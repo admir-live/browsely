@@ -16,11 +16,14 @@ public sealed class UrlRepository(DispatcherDbContext context) : IUrlRepository
         context.Url.Update(url);
     }
 
-    public Task<Url?> GetAsync(Ulid id, CancellationToken cancellationToken = default)
+    public Task<Url?> GetAsync(Ulid id, bool withTracking = false, CancellationToken cancellationToken = default)
     {
         var idAsGuid = id.ToGuid();
-        return context.Url
-            .AsNoTracking()
-            .FirstOrDefaultAsync(url => url.Id == idAsGuid, cancellationToken);
+
+        IQueryable<Url> query = withTracking
+            ? context.Url
+            : context.Url.AsNoTracking();
+
+        return query.FirstOrDefaultAsync(url => url.Id == idAsGuid, cancellationToken);
     }
 }

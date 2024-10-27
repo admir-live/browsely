@@ -4,7 +4,7 @@ public sealed class ScheduledState : IUrlState
 {
     public IUrlState Next()
     {
-        return new ActiveState();
+        return new InReviewState();
     }
 
     public override string ToString()

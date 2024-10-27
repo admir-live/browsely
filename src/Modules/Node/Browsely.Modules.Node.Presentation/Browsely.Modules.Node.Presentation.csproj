@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <ProjectReference Include="..\..\Dispatcher\Browsely.Modules.Dispatcher.Events\Browsely.Modules.Dispatcher.Events.csproj"/>
+        <ProjectReference Include="..\Browsely.Modules.Node.Application\Browsely.Modules.Node.Application.csproj"/>
+        <ProjectReference Include="..\Browsely.Modules.Node.Events\Browsely.Modules.Node.Events.csproj"/>
     </ItemGroup>
 </Project>

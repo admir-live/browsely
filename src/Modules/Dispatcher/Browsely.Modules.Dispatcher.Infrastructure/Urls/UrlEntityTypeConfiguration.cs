@@ -48,6 +48,7 @@ internal sealed class UrlEntityTypeConfiguration : IEntityTypeConfiguration<Url>
             "InReview" => new InReviewState(),
             "Active" => new ActiveState(),
             "Expired" => new ExpiredState(),
+            "Failed" => new FailedState(),
             _ => throw new InvalidOperationException($"Unknown state value: {stateString}")
         };
     }
@@ -60,6 +61,7 @@ internal sealed class UrlEntityTypeConfiguration : IEntityTypeConfiguration<Url>
             InReviewState => "InReview",
             ActiveState => "Active",
             ExpiredState => "Expired",
+            FailedState => "Failed",
             _ => throw new InvalidOperationException($"Unsupported state type: {currentState.GetType().Name}")
         };
     }

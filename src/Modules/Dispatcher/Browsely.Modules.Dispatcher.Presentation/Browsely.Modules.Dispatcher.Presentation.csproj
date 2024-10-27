@@ -2,6 +2,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\Common\Browsely.Common.Application\Browsely.Common.Application.csproj"/>
         <ProjectReference Include="..\..\..\Common\Browsely.Common.Presentation\Browsely.Common.Presentation.csproj"/>
+        <ProjectReference Include="..\..\Node\Browsely.Modules.Node.Events\Browsely.Modules.Node.Events.csproj"/>
         <ProjectReference Include="..\Browsely.Modules.Dispatcher.Application\Browsely.Modules.Dispatcher.Application.csproj"/>
     </ItemGroup>
 </Project>

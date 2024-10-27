@@ -1,4 +1,7 @@
 ﻿using Browsely.Common.Application.Extensions;
+using Browsely.Modules.Dispatcher.Infrastructure;
+using Browsely.Modules.Node.Application.Content;
+using Browsely.Modules.Node.Infrastructure.Content;
 using Browsely.Modules.Node.Presentation.Urls;
 using BrowselyCommon.Infrastructure;
 using MassTransit;
@@ -13,7 +16,16 @@ public static class InfrastructureConfiguration
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.ConfigureMessageBroker(configuration);
+        services.ConfigureContentClient(configuration);
         return services;
+    }
+
+    private static void ConfigureContentClient(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddHttpClientWithRetryPolicy<IContentService, BrowserlessContentService>(
+            "BrowserlessClient",
+            configuration.GetValueOrThrow<Uri>("Browserless:BaseUrl")
+        );
     }
 
     private static void ConfigureMessageBroker(this IServiceCollection services, IConfiguration configuration)

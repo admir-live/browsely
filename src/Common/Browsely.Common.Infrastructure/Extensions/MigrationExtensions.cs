@@ -10,9 +10,14 @@ public static class MigrationExtensions
     {
         using IServiceScope scope = app.ApplicationServices.CreateScope();
         using TDbContext context = scope.ServiceProvider.GetRequiredService<TDbContext>();
-        if (context.Database.GetPendingMigrations().Any())
+
+        try
         {
             context.Database.Migrate();
+        }
+        catch (Exception)
+        {
+            // Ignore due to docker compose latency. Need to add mechanism for graceful bootstrapping container.
         }
     }
 }
