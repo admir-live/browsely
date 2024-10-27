@@ -33,6 +33,8 @@ public sealed class UrlRepository(DispatcherDbContext context) : IUrlRepository
             ? context.Url
             : context.Url.AsNoTracking();
 
-        return query.FirstOrDefaultAsync(u => u.Uri == url, cancellationToken);
+        return query
+            .OrderByDescending(u => u.ModifiedOnUtc)
+            .FirstOrDefaultAsync(u => u.Uri == url, cancellationToken);
     }
 }
