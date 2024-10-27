@@ -24,8 +24,8 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "browsely-dispatcher-api:dev"
     ports:
-    - "127.0.0.1:57014:57100"
-    - "127.0.0.1:57214:57300"
+    - "127.0.0.1:57018:57100"
+    - "127.0.0.1:57218:57300"
     volumes:
     - "C:\\Users\\AdmirMujkic\\.nuget\\packages:/home/app/.nuget/packages"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely\\src\\Modules\\Dispatcher\\\
@@ -35,7 +35,7 @@ services:
       Linux64:/opt/rider-debugger"
     - "C:\\Users\\AdmirMujkic\\AppData\\Local\\Programs\\Rider\\bin:/etc/opt/rider-debugger/backend-log.xml"
     - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\Rider2024.2\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_10_27_08_57_14:/var/opt/rider-debugger:rw"
+      JetBrains.Debugger.Worker.2024_10_27_09_34_04:/var/opt/rider-debugger:rw"
     working_dir: "/app"
   browsely.modules.node.api:
     build:
@@ -60,8 +60,8 @@ services:
       RESHARPER_LOG_CONF: "/etc/opt/rider-debugger/backend-log.xml"
     image: "browsely-node-api:dev"
     ports:
-    - "127.0.0.1:57015:57100"
-    - "127.0.0.1:57215:57300"
+    - "127.0.0.1:57019:57100"
+    - "127.0.0.1:57219:57300"
     volumes:
     - "C:\\Users\\AdmirMujkic\\.nuget\\packages:/home/app/.nuget/packages"
     - "C:\\Users\\AdmirMujkic\\Desktop\\TRG\\Browsely\\src\\Modules\\Node\\Browsely.Modules.Node.Api:/app:rw"
@@ -70,5 +70,5 @@ services:
       Linux64:/opt/rider-debugger"
     - "C:\\Users\\AdmirMujkic\\AppData\\Local\\Programs\\Rider\\bin:/etc/opt/rider-debugger/backend-log.xml"
     - "C:\\Users\\AdmirMujkic\\AppData\\Local\\JetBrains\\Rider2024.2\\log\\DebuggerWorker\\\
-      JetBrains.Debugger.Worker.2024_10_27_08_57_14:/var/opt/rider-debugger:rw"
+      JetBrains.Debugger.Worker.2024_10_27_09_34_04:/var/opt/rider-debugger:rw"
     working_dir: "/app"

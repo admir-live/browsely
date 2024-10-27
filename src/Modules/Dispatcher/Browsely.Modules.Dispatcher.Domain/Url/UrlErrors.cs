@@ -13,4 +13,9 @@ public static class UrlErrors
     {
         return Error.NotFound("Url.NotExists", $"The URL with ID {id} does not exist.");
     }
+
+    public static Error InProcessingState(Uri uri)
+    {
+        return Error.Conflict("Url.InProcessingState", $"The URL {uri} is already in the processing state.");
+    }
 }

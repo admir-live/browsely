@@ -26,4 +26,13 @@ public sealed class UrlRepository(DispatcherDbContext context) : IUrlRepository
 
         return query.FirstOrDefaultAsync(url => url.Id == idAsGuid, cancellationToken);
     }
+
+    public Task<Url?> GetByUrlAsync(Uri url, bool withTracking = false, CancellationToken cancellationToken = default)
+    {
+        IQueryable<Url> query = withTracking
+            ? context.Url
+            : context.Url.AsNoTracking();
+
+        return query.FirstOrDefaultAsync(u => u.Uri == url, cancellationToken);
+    }
 }

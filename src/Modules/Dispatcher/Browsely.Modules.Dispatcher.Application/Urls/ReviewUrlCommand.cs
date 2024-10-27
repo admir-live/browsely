@@ -2,4 +2,4 @@
 
 namespace Browsely.Modules.Dispatcher.Application.Urls;
 
-public sealed record ReviewUrlCommand(string Uri) : ICommand<Ulid>;
+public sealed record ReviewUrlCommand(Uri Uri) : ICommand<Ulid>;

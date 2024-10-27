@@ -25,4 +25,14 @@ public interface IUrlRepository
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the URL.</returns>
     Task<Url?> GetAsync(Ulid id, bool withTracking = false, CancellationToken cancellationToken = default);
+
+
+    /// <summary>
+    ///     Retrieves a URL from the repository by its URL asynchronously.
+    /// </summary>
+    /// <param name="url">The URL to retrieve.</param>
+    /// <param name="withTracking">A flag indicating whether to track the entity.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the URL.</returns>
+    Task<Url?> GetByUrlAsync(Uri url, bool withTracking = false, CancellationToken cancellationToken = default);
 }

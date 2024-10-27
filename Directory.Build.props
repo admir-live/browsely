@@ -8,7 +8,7 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <NoWarn>IDE0005,IDE0023,CS1003,IDE0072,IDE0061,CA1054,S1694,CA1859,S2139,CA2254</NoWarn>
+        <NoWarn>IDE0005,IDE0023,CS1003,IDE0072,IDE0061,CA1054,S1694,CA1859,S2139,CA2254,CA1515</NoWarn>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(MSBuildProjectExtension)' != '.dcproj'">

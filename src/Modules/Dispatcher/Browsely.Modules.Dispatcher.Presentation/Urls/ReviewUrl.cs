@@ -1,7 +1,6 @@
 ﻿using Browsely.Common.Application.Messaging;
 using Browsely.Common.Domain;
 using Browsely.Common.Presentation.Endpoints;
-using Browsely.Common.Presentation.Results;
 using Browsely.Modules.Dispatcher.Application.Urls;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -15,8 +14,8 @@ internal sealed class ReviewUrl : IEndpoint
     {
         app.MapPost("url/review", async (Request request, IMessageBroker broker) =>
             {
-                Result<Ulid> result = await broker.SendAsync(new ReviewUrlCommand(request.Uri));
-                return result.Match(Results.Ok, ApiResults.Problem);
+                Result<Ulid> result = await broker.SendAsync(new ReviewUrlCommand(new Uri(request.Uri)));
+                return result.IsSuccess ? Results.Accepted(request.Uri, result.Value) : Results.BadRequest(result.Error);
             })
             .WithTags(Tags.Urls);
     }

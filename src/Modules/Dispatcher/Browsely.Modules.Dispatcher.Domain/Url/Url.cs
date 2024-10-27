@@ -22,9 +22,9 @@ public sealed class Url : Entity
         UpdateModifiedTimestamp();
     }
 
-    public void UpdateUri(string uri)
+    public void UpdateUri(Uri uri)
     {
-        Uri = new Uri(uri);
+        Uri = uri;
         UpdateModifiedTimestamp();
     }
 
@@ -45,10 +45,15 @@ public sealed class Url : Entity
         UpdateModifiedTimestamp();
     }
 
-    public static Url Create(Ulid urlId, string requestUri)
+    public static Url Create(Ulid urlId, Uri requestUri)
     {
         var url = new Url(urlId);
         url.UpdateUri(requestUri);
         return url;
+    }
+
+    public bool InProcessingState()
+    {
+        return CurrentState is InReviewState or ScheduledState;
     }
 }

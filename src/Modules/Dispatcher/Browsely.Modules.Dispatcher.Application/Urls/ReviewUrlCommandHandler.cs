@@ -21,6 +21,13 @@ internal sealed class ReviewUrlCommandHandler(
 
     public async Task<Result<Ulid>> Handle(ReviewUrlCommand request, CancellationToken cancellationToken)
     {
+        Url? existingUrl = await _urlRepository.GetByUrlAsync(request.Uri, cancellationToken: cancellationToken);
+        if (existingUrl is not null && existingUrl.InProcessingState())
+        {
+            _logger.LogInformation("URL already exists with ID: {UrlId}", existingUrl.Id);
+            return Result.Failure<Ulid>(UrlErrors.InProcessingState(request.Uri));
+        }
+
         var urlId = Ulid.NewUlid();
         var url = Url.Create(urlId, request.Uri);
         url.NextState();

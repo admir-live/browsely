@@ -2,9 +2,8 @@
 
 namespace Browsely.Common.Application.Exceptions;
 
-public sealed class BrowselyException(string requestName, Error? error = default, Exception? innerException = default) :
-    Exception("Application exception", innerException)
+public sealed class BrowselyException(string message, Error? error = default, Exception? innerException = default) :
+    Exception(message, innerException)
 {
-    public string RequestName { get; } = requestName;
     public Error? Error { get; } = error;
 }
