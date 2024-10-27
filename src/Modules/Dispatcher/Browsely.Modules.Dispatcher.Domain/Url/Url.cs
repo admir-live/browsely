@@ -13,7 +13,7 @@ public sealed class Url : Entity
     }
 
     public Payload HtmlContent { get; private set; }
-    public IUrlState CurrentState { get; } = new ScheduledState();
+    public IUrlState CurrentState { get; private set; } = new ScheduledState();
     public Uri Uri { get; private set; }
 
     public void UpdateHtmlContent(Payload htmlContent)
@@ -22,14 +22,26 @@ public sealed class Url : Entity
         UpdateModifiedTimestamp();
     }
 
-    public void UpdateUri(Uri uri)
+    public void UpdateUri(string uri)
     {
-        Uri = uri;
+        Uri = new Uri(uri);
         UpdateModifiedTimestamp();
     }
 
     public void UpdateModifiedTimestamp()
     {
         ModifiedOnUtc = DateTime.UtcNow;
+    }
+
+    public void NextState()
+    {
+        CurrentState = CurrentState.Next();
+    }
+
+    public static Url Create(Ulid urlId, string requestUri)
+    {
+        var url = new Url(urlId);
+        url.UpdateUri(requestUri);
+        return url;
     }
 }

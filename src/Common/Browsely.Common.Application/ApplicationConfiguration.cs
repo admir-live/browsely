@@ -18,7 +18,7 @@ public static class ApplicationConfiguration
             config.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
 
-        services.AddValidatorsFromAssemblies(moduleAssemblies, includeInternalTypes: true, lifetime: ServiceLifetime.Transient);
+        services.AddValidatorsFromAssemblies(moduleAssemblies, includeInternalTypes: true);
         return services;
     }
 }

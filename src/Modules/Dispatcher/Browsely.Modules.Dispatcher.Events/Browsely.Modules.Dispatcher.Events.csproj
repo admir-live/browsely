@@ -1,2 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Common\Browsely.Common.Application\Browsely.Common.Application.csproj"/>
+    </ItemGroup>
 </Project>

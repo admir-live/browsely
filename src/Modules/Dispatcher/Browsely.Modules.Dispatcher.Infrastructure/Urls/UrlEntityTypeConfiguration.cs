@@ -19,19 +19,22 @@ internal sealed class UrlEntityTypeConfiguration : IEntityTypeConfiguration<Url>
             .Property(p => p.Uri)
             .HasConversion(new ValueConverter<Uri, string>(
                 uri => uri.ToString(),
-                uri => new Uri(uri)));
+                uri => new Uri(uri)))
+            .HasMaxLength(500);
 
         builder
             .Property(p => p.HtmlContent)
             .HasConversion(new ValueConverter<Payload, string>(
                 htmlContent => htmlContent.Value,
-                htmlContent => new Payload(htmlContent)));
+                htmlContent => new Payload(htmlContent)))
+            .IsRequired(false);
 
         builder
             .Property(p => p.CurrentState)
             .HasConversion(new ValueConverter<IUrlState, string>(
                 state => ConvertStateToString(state),
-                state => ConvertStringToState(state)));
+                state => ConvertStringToState(state)))
+            .HasMaxLength(20);
 
         builder
             .HasIndex(url => url.CurrentState);

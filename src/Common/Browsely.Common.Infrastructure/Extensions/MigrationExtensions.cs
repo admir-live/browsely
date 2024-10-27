@@ -10,6 +10,9 @@ public static class MigrationExtensions
     {
         using IServiceScope scope = app.ApplicationServices.CreateScope();
         using TDbContext context = scope.ServiceProvider.GetRequiredService<TDbContext>();
-        context.Database.Migrate();
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate();
+        }
     }
 }

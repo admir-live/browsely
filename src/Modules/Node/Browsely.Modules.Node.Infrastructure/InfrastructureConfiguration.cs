@@ -1,28 +1,18 @@
-﻿using Browsely.Common.Application.Abstractions.Data;
-using Browsely.Common.Application.Extensions;
-using Browsely.Common.Presentation.Endpoints;
-using Browsely.Modules.Dispatcher.Domain.Url;
-using Browsely.Modules.Dispatcher.Infrastructure.Database;
-using Browsely.Modules.Dispatcher.Infrastructure.Urls;
-using Browsely.Modules.Dispatcher.Presentation;
+﻿using Browsely.Common.Application.Extensions;
+using Browsely.Modules.Node.Presentation.Urls;
 using BrowselyCommon.Infrastructure;
 using MassTransit;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Browsely.Modules.Dispatcher.Infrastructure;
+namespace Browsely.Modules.Node.Infrastructure;
 
 public static class InfrastructureConfiguration
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.ConfigureMessageBroker(configuration);
-        services.ConfigureDatabase(configuration);
-        services.ConfigureEndpoints();
-        services.ConfigureRepositories();
-
         return services;
     }
 
@@ -43,27 +33,8 @@ public static class InfrastructureConfiguration
         );
     }
 
-    private static void ConfigureDatabase(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.AddDbContext<DispatcherDbContext>((_, builder) =>
-        {
-            builder.UseSqlServer(configuration.GetConnectionString("DispatcherDatabase"));
-        });
-    }
-
-    private static void ConfigureEndpoints(this IServiceCollection services)
-    {
-        services.AddEndpoints(AssemblyReference.Assembly);
-    }
-
-    private static void ConfigureRepositories(this IServiceCollection services)
-    {
-        services.AddScoped<IUnitOfWork, DispatcherDbContextUnitOfWork>();
-        services.AddScoped<IUrlRepository, UrlRepository>();
-    }
-
     private static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
     {
-        // No consumers to configure
+        registrationConfigurator.AddConsumer<OnUrlReviewScheduledEventHandler>();
     }
 }

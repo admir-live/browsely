@@ -1,28 +1,48 @@
 ﻿services:
-  #  browsely.modules.dispatcher.api:
-  #    image: browsely-dispatcher-api
-  #    build:
-  #      context: .
-  #      dockerfile: src/Modules/Dispatcher/Browsely.Modules.Dispatcher.Api/Dockerfile
+  browsely.modules.dispatcher.api:
+    image: browsely-dispatcher-api
+    container_name: Browsely.Dispatcher.Api
+    build:
+      context: .
+      dockerfile: src/Modules/Dispatcher/Browsely.Modules.Dispatcher.Api/Dockerfile
+    ports:
+      - "5163:5163"
+      - "8081:8080"
+    depends_on:
+      - browsely.rabbitmq
+      - browsely.sqlserver
+      - browsely.seq
+
+  browsely.modules.node.api:
+    image: browsely-node-api
+    container_name: Browsely.Node.Api
+    build:
+      context: .
+      dockerfile: src/Modules/Node/Browsely.Modules.Node.Api/Dockerfile
+    ports:
+      - "5058:5058"
+      - "8082:8080"
+    depends_on:
+      - browsely.rabbitmq
 
   browsely.rabbitmq:
-    container_name: browsely-rabbitmq
+    container_name: Browsely.Rabbitmq
     image: bitnami/rabbitmq:latest
     restart: unless-stopped
     environment:
-      RABBITMQ_PASSWORD: "NewPassword123"
-      RABBITMQ_USERNAME: "rabbitmq"
-      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit loopback_users []"
+      - RABBITMQ_PASSWORD=NewPassword123
+      - RABBITMQ_USERNAME=rabbitmq
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit loopback_users []
     ports:
       - "15672:15672"
       - "5672:5672"
 
   browsely.sqlserver:
-    container_name: browsely-mssql
+    container_name: Browsely.SqlServer
     image: mcr.microsoft.com/mssql/server
     restart: unless-stopped
     environment:
-      - ACCEPT_EULA=Y.
+      - ACCEPT_EULA=Y
       - SA_PASSWORD=Plavi.12.
     ports:
       - "1434:1433"
@@ -30,7 +50,7 @@
       - ./data/sqldata:/var/opt/mssql/data
 
   browsely.seq:
-    container_name: browsely-seq
+    container_name: Browsely.Seq
     restart: unless-stopped
     image: datalust/seq
     environment:

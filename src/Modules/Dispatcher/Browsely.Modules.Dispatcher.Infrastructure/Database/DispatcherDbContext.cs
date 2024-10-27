@@ -1,11 +1,10 @@
-﻿using Browsely.Common.Application.Abstractions.Data;
-using Browsely.Modules.Dispatcher.Domain.Url;
+﻿using Browsely.Modules.Dispatcher.Domain.Url;
 using Browsely.Modules.Dispatcher.Infrastructure.Urls;
 using Microsoft.EntityFrameworkCore;
 
 namespace Browsely.Modules.Dispatcher.Infrastructure.Database;
 
-public sealed class DispatcherDbContext(DbContextOptions<DispatcherDbContext> options) : DbContext(options), IUnitOfWork
+public sealed class DispatcherDbContext(DbContextOptions<DispatcherDbContext> options) : DbContext(options)
 {
     internal DbSet<Url> Url { get; set; }
 
