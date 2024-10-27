@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Dispatcher\Browsely.Modules.Dispatcher.Events\Browsely.Modules.Dispatcher.Events.csproj"/>
         <ProjectReference Include="..\Browsely.Modules.Node.Application\Browsely.Modules.Node.Application.csproj"/>

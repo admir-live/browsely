@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 
-namespace BrowselyCommon.Infrastructure.Middleware;
+namespace Browsely.Common.Infrastructure.Middleware;
 
 internal sealed class LogContextTraceLoggingMiddleware(RequestDelegate next)
 {

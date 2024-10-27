@@ -12,7 +12,7 @@ internal sealed class ReviewUrl : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("url/review", async (Request request, IMessageBroker broker) =>
+        app.MapPost("url", async (Request request, IMessageBroker broker) =>
             {
                 Result<Ulid> result = await broker.SendAsync(new ReviewUrlCommand(new Uri(request.Uri)));
                 return result.IsSuccess ? Results.Accepted(request.Uri, result.Value) : Results.BadRequest(result.Error);

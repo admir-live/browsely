@@ -1,12 +1,12 @@
 ﻿using Browsely.Common.Application.Clock;
 using Browsely.Common.Application.Messaging;
-using BrowselyCommon.Infrastructure.Clock;
-using BrowselyCommon.Infrastructure.Messaging;
+using Browsely.Common.Infrastructure.Clock;
+using Browsely.Common.Infrastructure.Messaging;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace BrowselyCommon.Infrastructure;
+namespace Browsely.Common.Infrastructure;
 
 public record InfrastructureBusOptions(string Host, string VirtualHost, string Username, string Password);
 

@@ -1,13 +1,13 @@
 ﻿using System.Net;
 using Browsely.Common.Application.Abstractions.Data;
 using Browsely.Common.Application.Extensions;
+using Browsely.Common.Infrastructure;
 using Browsely.Common.Presentation.Endpoints;
 using Browsely.Modules.Dispatcher.Domain.Url;
 using Browsely.Modules.Dispatcher.Infrastructure.Database;
 using Browsely.Modules.Dispatcher.Infrastructure.Urls;
 using Browsely.Modules.Dispatcher.Presentation;
 using Browsely.Modules.Dispatcher.Presentation.Urls;
-using BrowselyCommon.Infrastructure;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

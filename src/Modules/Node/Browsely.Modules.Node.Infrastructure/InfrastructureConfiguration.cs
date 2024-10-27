@@ -1,9 +1,9 @@
 ﻿using Browsely.Common.Application.Extensions;
+using Browsely.Common.Infrastructure;
 using Browsely.Modules.Dispatcher.Infrastructure;
 using Browsely.Modules.Node.Application.Content;
 using Browsely.Modules.Node.Infrastructure.Content;
 using Browsely.Modules.Node.Presentation.Urls;
-using BrowselyCommon.Infrastructure;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

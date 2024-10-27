@@ -1,7 +1,7 @@
-﻿using BrowselyCommon.Infrastructure.Middleware;
+﻿using Browsely.Common.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 
-namespace BrowselyCommon.Infrastructure.Extensions;
+namespace Browsely.Common.Infrastructure.Extensions;
 
 public static class MiddlewareExtensions
 {

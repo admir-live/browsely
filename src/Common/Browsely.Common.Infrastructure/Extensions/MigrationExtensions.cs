@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BrowselyCommon.Infrastructure.Extensions;
+namespace Browsely.Common.Infrastructure.Extensions;
 
 public static class MigrationExtensions
 {

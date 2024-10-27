@@ -1,7 +1,7 @@
+using Browsely.Common.Infrastructure.Extensions;
+using Browsely.Common.Infrastructure.Middleware;
 using Browsely.Modules.Node.Application;
 using Browsely.Modules.Node.Infrastructure;
-using BrowselyCommon.Infrastructure.Extensions;
-using BrowselyCommon.Infrastructure.Middleware;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

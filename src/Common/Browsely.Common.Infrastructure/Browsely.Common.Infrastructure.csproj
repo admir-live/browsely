@@ -2,9 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <RootNamespace>BrowselyCommon.Infrastructure</RootNamespace>
+        <RootNamespace>Browsely.Common.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

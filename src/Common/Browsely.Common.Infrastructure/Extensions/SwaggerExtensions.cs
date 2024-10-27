@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace BrowselyCommon.Infrastructure.Extensions;
+namespace Browsely.Common.Infrastructure.Extensions;
 
 public static class SwaggerExtensions
 {

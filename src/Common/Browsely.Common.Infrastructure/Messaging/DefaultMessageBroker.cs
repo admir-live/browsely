@@ -3,7 +3,7 @@ using Browsely.Common.Domain;
 using MassTransit;
 using MediatR;
 
-namespace BrowselyCommon.Infrastructure.Messaging;
+namespace Browsely.Common.Infrastructure.Messaging;
 
 /// <inheritdoc />
 internal sealed class DefaultMessageBroker(IMediator mediator, IBus bus) : IMessageBroker
