@@ -32,7 +32,15 @@ public static class InfrastructureConfiguration
     {
         InfrastructureBusOptions busSettings = GetBusSettings(configuration);
         services.TryAddSingleton(busSettings);
-        services.AddInfrastructure(busSettings, [ConfigureConsumers]);
+        services.AddInfrastructures(busSettings, [ConfigureConsumers], ConfigureEndpoints);
+    }
+
+    private static void ConfigureEndpoints(IRabbitMqBusFactoryConfigurator configurator, IBusRegistrationContext context)
+    {
+        configurator.ReceiveEndpoint("custom_url_review_scheduled_queue-admir-" + Environment.MachineName, e =>
+        {
+            e.ConfigureConsumer<OnUrlReviewScheduledEventHandler>(context);
+        });
     }
 
     private static InfrastructureBusOptions GetBusSettings(IConfiguration configuration)

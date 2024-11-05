@@ -28,6 +28,32 @@ services:
     depends_on:
       - browsely.rabbitmq
 
+  browsely.modules.node.api.2:
+    image: browsely-node-api
+    container_name: Browsely.Node.Api.2
+    build:
+      context: .
+      dockerfile: src/Modules/Node/Browsely.Modules.Node.Api/Dockerfile
+    ports:
+      - "5059:5058"
+      - "8083:8080"
+    privileged: true
+    depends_on:
+      - browsely.rabbitmq
+
+  browsely.modules.node.api.3:
+    image: browsely-node-api
+    container_name: Browsely.Node.Api.3
+    build:
+      context: .
+      dockerfile: src/Modules/Node/Browsely.Modules.Node.Api/Dockerfile
+    ports:
+      - "5060:5058"
+      - "8084:8080"
+    privileged: true
+    depends_on:
+      - browsely.rabbitmq
+
   browsely.rabbitmq:
     container_name: Browsely.Rabbitmq
     image: bitnami/rabbitmq:latest

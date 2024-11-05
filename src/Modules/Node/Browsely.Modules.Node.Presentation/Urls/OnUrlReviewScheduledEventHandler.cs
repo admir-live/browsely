@@ -2,7 +2,6 @@
 using Browsely.Modules.Dispatcher.Events;
 using Browsely.Modules.Node.Application.Content;
 using Browsely.Modules.Node.Application.Docker;
-using Browsely.Modules.Node.Events;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
@@ -22,18 +21,19 @@ public sealed class OnUrlReviewScheduledEventHandler(
 
     public override async Task Consume(ConsumeContext<UrlReviewScheduledEvent> context)
     {
-        _logger.LogInformation("URL review scheduled successfully for ID: {UrlId}", context.Message.Url);
-
-        await _dockerService.EnsureDockerContainerRunningAsync();
-        ContentResponse content = await _contentService.GetContentAsync(new ContentRequest(context.Message.Url));
-        await _dockerService.EnsureDockerContainerStoppedAsync();
-
-        _logger.LogInformation("Content retrieved from URL: {StatusCode} :: {Content}", content.StatusCode, content.Content);
-
-        await _messageBroker.PublishAsync(
-            new UrlReviewedEvent(
-                context.Message.Id,
-                content.StatusCode,
-                content.Content));
+        _logger.LogInformation("URL review scheduled successfully for ID: {UrlId} - {MachineName}", context.Message.Url, Environment.MachineName);
+        await Task.CompletedTask;
+        //
+        // await _dockerService.EnsureDockerContainerRunningAsync();
+        // ContentResponse content = await _contentService.GetContentAsync(new ContentRequest(context.Message.Url));
+        // await _dockerService.EnsureDockerContainerStoppedAsync();
+        //
+        // _logger.LogInformation("Content retrieved from URL: {StatusCode} :: {Content}", content.StatusCode, content.Content);
+        //
+        // await _messageBroker.PublishAsync(
+        //     new UrlReviewedEvent(
+        //         context.Message.Id,
+        //         content.StatusCode,
+        //         content.Content));
     }
 }

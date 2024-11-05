@@ -12,10 +12,11 @@ public record InfrastructureBusOptions(string Host, string VirtualHost, string U
 
 public static class InfrastructureConfiguration
 {
-    public static IServiceCollection AddInfrastructure(
+    public static IServiceCollection AddInfrastructures(
         this IServiceCollection services,
         InfrastructureBusOptions busOptions,
-        Action<IRegistrationConfigurator>[] moduleConfigureConsumers)
+        Action<IRegistrationConfigurator>[] moduleConfigureConsumers,
+        Action<IRabbitMqBusFactoryConfigurator, IBusRegistrationContext>? configureEndpoints = null)
     {
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.TryAddSingleton<IEventBus, DefaultMessageBroker>();
@@ -37,6 +38,7 @@ public static class InfrastructureConfiguration
                     h.Password(busOptions.Password);
                 });
 
+                configureEndpoints?.Invoke(configurator, context);
                 configurator.ConfigureEndpoints(context);
             });
         });

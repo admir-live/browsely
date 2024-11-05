@@ -69,7 +69,7 @@ public static class InfrastructureConfiguration
     {
         InfrastructureBusOptions busSettings = GetBusSettings(configuration);
         services.TryAddSingleton(busSettings);
-        services.AddInfrastructure(busSettings, [ConfigureConsumers]);
+        services.AddInfrastructures(busSettings, [ConfigureConsumers]);
     }
 
     private static InfrastructureBusOptions GetBusSettings(IConfiguration configuration)
